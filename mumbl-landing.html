@@ -1,0 +1,580 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#00d4aa",
+        "secondary": "#00b894"
+      },
+      "fontFamily": {
+        "poppins": [
+          "Poppins",
+          "sans-serif"
+        ],
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      },
+      "backgroundImage": {
+        "gradient-primary": "linear-gradient(135deg, #00d4aa, #00b894)"
+      }
+    }
+  }
+};</script>
+    
+    <script>
+        // Smooth scrolling functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('nav ul li span');
+            
+            // Add click event listeners to each navigation link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the text content of the clicked link
+                    const linkText = this.textContent.trim();
+                    
+                    // Map the link text to section IDs
+                    const sectionMap = {
+                        'Features': 'features',
+                        'How It Works': 'how-it-works',
+                        'Languages': 'languages'
+                    };
+                    
+                    // Get the target section ID
+                    const targetSectionId = sectionMap[linkText];
+                    
+                    if (targetSectionId) {
+                        const targetSection = document.getElementById(targetSectionId);
+                        
+                        if (targetSection) {
+                            // Calculate the offset to account for the fixed header
+                            const headerHeight = document.getElementById('header').offsetHeight;
+                            const targetPosition = targetSection.offsetTop - headerHeight;
+                            
+                            // Smooth scroll to the target section
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header id="header" class="bg-white shadow-sm fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <span class="flex items-center cursor-pointer">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center mr-2">
+                    <img src="assets/icon.png" alt="Mumbl logo" class="logo-icon">
+                </div>
+                <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-primary">Mumbl</span>
+            </span>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><span class="text-gray-700 hover:text-primary transition cursor-pointer">Features</span></li>
+                    <li><span class="text-gray-700 hover:text-primary transition cursor-pointer">How It Works</span></li>
+                    <li><span class="text-gray-700 hover:text-primary transition cursor-pointer">Languages</span></li>
+                </ul>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <span class="bg-gradient-primary text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition cursor-pointer">Get Started</span>
+                <button class="md:hidden text-gray-700">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="container mx-auto px-4 py-24" id="hero">
+    <div class="flex flex-col md:flex-row items-center min-h-[800px]">
+        <div class="md:w-1/2 mb-16 md:mb-0">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8">
+                Learn Languages Through <span class="bg-clip-text text-transparent bg-gradient-primary">Conversation</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">
+                Mumbl is a conversational-first language learning app that helps you speak confidently through AI-powered dialogues and personalized lessons.
+            </p>
+            <div class="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-6">
+                <span class="bg-gradient-primary text-white px-10 py-4 rounded-full font-medium hover:opacity-90 transition text-center cursor-pointer text-lg">
+                    Download App
+                </span>
+                <span class="border border-gray-300 text-gray-700 px-10 py-4 rounded-full font-medium hover:bg-gray-50 transition text-center cursor-pointer text-lg">
+                    Learn More
+                </span>
+            </div>
+
+        </div>
+        <div class="md:w-1/2 relative">
+            <div class="absolute top-0 right-0 -z-10 w-80 h-80 bg-primary rounded-full opacity-10 blur-3xl"></div>
+            <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 max-w-md mx-auto">
+                <div class="bg-gradient-primary p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                                <i class="fa-solid fa-comment-dots text-white text-lg"></i>
+                            </div>
+                            <span class="ml-3 text-white font-medium text-lg">mumbl</span>
+                        </div>
+                        <div class="text-white">
+                            <i class="fa-solid fa-ellipsis-vertical text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 rounded-lg p-4 text-white">
+                        <p class="text-base font-medium">Somali Conversation Practice</p>
+                        <div class="flex items-center mt-2">
+                            <i class="fa-solid fa-microphone text-sm"></i>
+                            <span class="ml-2 text-sm">Interactive Speaking</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start mb-6">
+                        <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fa-solid fa-robot text-gray-500 text-sm"></i>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg rounded-tl-none p-4">
+                            <p class="text-base">Iska warran? Sidee tahay maanta?</p>
+                            <p class="text-sm text-gray-500 mt-2">How are you? How are you today?</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start mb-6 justify-end">
+                        <div class="bg-gradient-primary rounded-lg rounded-tr-none p-4">
+                            <p class="text-base text-white">Waan fiicnahay, mahadsanid. Waxaan rajeynayaa.</p>
+                            <p class="text-sm text-white/70 mt-2">I'm fine, thank you. I'm hopeful.</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center ml-4 flex-shrink-0">
+                            <i class="fa-solid fa-user text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-start mb-8">
+                        <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fa-solid fa-robot text-gray-500 text-sm"></i>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg rounded-tl-none p-4">
+                            <p class="text-base">Waa hagaag! Maxaad samaynaysaa berri?</p>
+                            <p class="text-sm text-gray-500 mt-2">That's good! What are you doing tomorrow?</p>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <div class="relative">
+                            <div class="h-14 bg-gray-100 rounded-full flex items-center px-6">
+                                <i class="fa-solid fa-microphone text-primary text-lg"></i>
+                                <div class="w-full h-2 mx-4">
+                                    <div class="h-full bg-gradient-primary rounded-full" style="width: 30%"></div>
+                                </div>
+                                <span class="text-sm text-gray-500">0:05</span>
+                            </div>
+                            <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm py-2 px-4 rounded-full">
+                                Tap to speak
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Learn with Mumbl?</h2>
+                <p class="text-gray-600">Our unique approach focuses on conversation skills from day one, helping you gain confidence in your target language faster.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div id="feature-card-1" class="bg-gray-50 rounded-xl p-6 transition-all hover:shadow-md">
+                    <div class="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-comments text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Conversation-First Approach</h3>
+                    <p class="text-gray-600">Practice speaking and listening through interactive AI-powered dialogues that adapt to your skill level.</p>
+                </div>
+                
+                <div id="feature-card-2" class="bg-gray-50 rounded-xl p-6 transition-all hover:shadow-md">
+                    <div class="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-robot text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">AI-Driven Personalization</h3>
+                    <p class="text-gray-600">Lessons dynamically adjust based on your performance, focusing on areas where you need more practice.</p>
+                </div>
+                
+                <div id="feature-card-3" class="bg-gray-50 rounded-xl p-6 transition-all hover:shadow-md">
+                    <div class="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-globe text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Long-Tail Language Support</h3>
+                    <p class="text-gray-600">Learn both popular and underrepresented languages with our scalable content creation system.</p>
+                </div>
+                
+                <div id="feature-card-4" class="bg-gray-50 rounded-xl p-6 transition-all hover:shadow-md">
+                    <div class="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-headphones text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Mumbl Radio</h3>
+                    <p class="text-gray-600">Immerse yourself with passive listening content tailored to your level and interests.</p>
+                </div>
+                
+                <div id="feature-card-5" class="bg-gray-50 rounded-xl p-6 transition-all hover:shadow-md">
+                    <div class="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-user-graduate text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Adaptive Progression</h3>
+                    <p class="text-gray-600">Our system tracks your linguistic profile and adjusts future lessons to maximize your learning.</p>
+                </div>
+                
+                <div id="feature-card-6" class="bg-gray-50 rounded-xl p-6 transition-all hover:shadow-md">
+                    <div class="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-gamepad text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Subtle Gamification</h3>
+                    <p class="text-gray-600">Stay motivated with milestone recognition and personalized feedback that feels natural.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">How Mumbl Works</h2>
+                <p class="text-gray-600">Our unique approach helps you develop real conversation skills from day one</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div id="how-it-works-content" class="order-2 md:order-1">
+                    <div class="space-y-8">
+                        <div class="flex">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                                    <span class="text-white font-medium">1</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Personalized Onboarding</h3>
+                                <p class="text-gray-600">We assess your current skill level and learning goals to create a tailored learning path.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                                    <span class="text-white font-medium">2</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Interactive Lessons</h3>
+                                <p class="text-gray-600">Engage in AI-powered conversations that adapt to your responses and provide real-time feedback.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                                    <span class="text-white font-medium">3</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Role-Play Scenarios</h3>
+                                <p class="text-gray-600">Practice real-world situations like ordering food, asking for directions, or making small talk.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                                    <span class="text-white font-medium">4</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Continuous Adaptation</h3>
+                                <p class="text-gray-600">Our system learns from your interactions and adjusts future lessons to focus on areas that need improvement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="how-it-works-image" class="order-1 md:order-2">
+    <div class="relative">
+        <div class="absolute top-0 right-0 -z-10 w-64 h-64 bg-primary rounded-full opacity-10 blur-3xl"></div>
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 max-w-sm mx-auto">
+            <div class="bg-gradient-primary p-4">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-white font-medium">Twi Lesson</h3>
+                    <div class="bg-white/20 rounded-full px-3 py-1">
+                        <span class="text-white text-sm">Level 1</span>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="mb-6">
+                    <h4 class="font-medium mb-2">Role-Play: Meeting a Friend</h4>
+                    <p class="text-sm text-gray-600 mb-4">Practice greeting someone and asking how they are in Twi.</p>
+                    <div class="flex space-x-2">
+                        <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">Speaking</span>
+                        <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">Listening</span>
+                        <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Greetings</span>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-100 pt-4">
+                    <div class="flex items-start mb-4">
+                        <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fa-solid fa-user text-gray-500 text-xs"></i>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg rounded-tl-none p-3">
+                            <p class="text-sm font-medium">Friend</p>
+                            <p class="text-sm">Maakye! Wo ho te sɛn?</p>
+                            <p class="text-xs text-gray-500 mt-1">Good morning! How are you?</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-center mb-2">
+                            <span class="text-xs text-gray-500">Tap to record your response</span>
+                        </div>
+                        <button class="w-full bg-gradient-primary text-white py-3 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-microphone mr-2"></i>
+                            <span>Speak Now</span>
+                        </button>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-lg p-3">
+                        <p class="text-sm font-medium mb-1">Suggested responses:</p>
+                        <p class="text-sm text-gray-600">• Maakye! Me ho yɛ</p>
+                        <p class="text-sm text-gray-600">• Yɛ frɛ me Kofi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Languages You Can Learn</h2>
+                <p class="text-gray-600">From popular languages to underrepresented ones, Mumbl is expanding its offerings</p>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div id="language-card-1" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">🇪🇸</span>
+                    </div>
+                    <h3 class="font-medium">Spanish</h3>
+                </div>
+                
+                <div id="language-card-2" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">🇸🇦</span>
+                    </div>
+                    <h3 class="font-medium">Arabic</h3>
+                </div>
+                
+                <div id="language-card-3" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">🇬🇭</span>
+                    </div>
+                    <h3 class="font-medium">Twi</h3>
+                </div>
+                
+                <div id="language-card-4" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">🇸🇴</span>
+                    </div>
+                    <h3 class="font-medium">Somali</h3>
+                </div>
+                
+                <div id="language-card-5" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">🇫🇷</span>
+                    </div>
+                    <h3 class="font-medium">French</h3>
+                </div>
+                
+                <div id="language-card-6" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">🇮🇹</span>
+                    </div>
+                    <h3 class="font-medium">Italian</h3>
+                </div>
+                
+                <div id="language-card-7" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">🇪🇹</span>
+                    </div>
+                    <h3 class="font-medium">Amharic</h3>
+                </div>
+                
+                <div id="language-card-8" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">🇲🇦</span>
+                    </div>
+                    <h3 class="font-medium">Berber</h3>
+                </div>
+                
+                <div id="language-card-9" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">🇳🇬</span>
+                    </div>
+                    <h3 class="font-medium">Yoruba</h3>
+                </div>
+                
+                <div id="language-card-10" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">🇰🇪</span>
+                    </div>
+                    <h3 class="font-medium">Swahili</h3>
+                </div>
+                
+                <div id="language-card-11" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">🇵🇭</span>
+                    </div>
+                    <h3 class="font-medium">Tagalog</h3>
+                </div>
+                
+                <div id="language-card-12" class="bg-gray-50 rounded-xl p-4 text-center transition-all hover:shadow-md hover:bg-gradient-primary hover:text-white group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-primary group-hover:bg-white/20 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-white group-hover:text-white text-xl">➕</span>
+                    </div>
+                    <h3 class="font-medium">More Coming</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- CTA Section -->
+    <section id="cta" class="py-20 bg-gradient-primary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Start Speaking Confidently?</h2>
+            <p class="text-white/90 max-w-2xl mx-auto mb-10 text-lg">Download Mumbl today and experience a new way of learning languages through conversation.</p>
+            
+            <div class="flex justify-center">
+                <span class="bg-white text-primary px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition flex items-center justify-center cursor-pointer">
+                    <i class="fa-brands fa-apple text-xl mr-2"></i>
+                    <span>App Store</span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <span class="flex items-center mb-4 cursor-pointer">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-2">
+                            <img src="assets/icon.png" alt="Mumbl logo" class="logo-icon">
+                        </div>
+                        <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-primary">mumbl</span>
+                    </span>
+                    <p class="text-gray-600 mb-4">Learn languages through conversation with our AI-powered app.</p>
+                    <div class="flex space-x-4">
+                        <span class="text-gray-400 hover:text-primary transition cursor-pointer">
+                            <i class="fa-brands fa-twitter text-xl"></i>
+                        </span>
+                        <span class="text-gray-400 hover:text-primary transition cursor-pointer">
+                            <i class="fa-brands fa-facebook text-xl"></i>
+                        </span>
+                        <span class="text-gray-400 hover:text-primary transition cursor-pointer">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </span>
+                        <span class="text-gray-400 hover:text-primary transition cursor-pointer">
+                            <i class="fa-brands fa-linkedin text-xl"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">About Us</span></li>
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">Careers</span></li>
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">Blog</span></li>
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">Press</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">Help Center</span></li>
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">Community</span></li>
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">Language Guides</span></li>
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">API</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">Privacy Policy</span></li>
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">Terms of Service</span></li>
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">Cookie Policy</span></li>
+                        <li><span class="text-gray-600 hover:text-primary transition cursor-pointer">GDPR</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-100 mt-12 pt-8 text-center">
+                <p class="text-gray-500">© 2024 Mumbl. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body></html>
